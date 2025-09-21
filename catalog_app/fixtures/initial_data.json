@@ -1,0 +1,142 @@
+[
+    {
+        "model": "catalog_app.artiste",
+        "pk": 1,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Legend",
+            "age": 44,
+            "date_created": "2025-09-20T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalog_app.artiste",
+        "pk": 2,
+        "fields": {
+            "first_name": "Adele",
+            "last_name": "Adkins",
+            "age": 35,
+            "date_created": "2025-09-20T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalog_app.artiste",
+        "pk": 3,
+        "fields": {
+            "first_name": "Ed",
+            "last_name": "Sheeran",
+            "age": 32,
+            "date_created": "2025-09-20T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalog_app.artiste",
+        "pk": 4,
+        "fields": {
+            "first_name": "Taylor",
+            "last_name": "Swift",
+            "age": 33,
+            "date_created": "2025-09-20T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalog_app.artiste",
+        "pk": 5,
+        "fields": {
+            "first_name": "Bruno",
+            "last_name": "Mars",
+            "age": 37,
+            "date_created": "2025-09-20T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalog_app.song",
+        "pk": 1,
+        "fields": {
+            "title": "All of Me",
+            "release_date": "2013-08-12",
+            "artiste": 1
+        }
+    },
+    {
+        "model": "catalog_app.song",
+        "pk": 2,
+        "fields": {
+            "title": "Hello",
+            "release_date": "2015-10-23",
+            "artiste": 2
+        }
+    },
+    {
+        "model": "catalog_app.song",
+        "pk": 3,
+        "fields": {
+            "title": "Shape of You",
+            "release_date": "2017-01-06",
+            "artiste": 3
+        }
+    },
+    {
+        "model": "catalog_app.song",
+        "pk": 4,
+        "fields": {
+            "title": "Shake It Off",
+            "release_date": "2014-08-18",
+            "artiste": 4
+        }
+    },
+    {
+        "model": "catalog_app.song",
+        "pk": 5,
+        "fields": {
+            "title": "Just the Way You Are",
+            "release_date": "2010-07-20",
+            "artiste": 5
+        }
+    },
+    {
+        "model": "catalog_app.lyric",
+        "pk": 1,
+        "fields": {
+            "content": "What would I do without your smart mouth?\nDrawing me in, and you kicking me out\nYou've got my head spinning, no kidding\nI can't pin you down",
+            "date_created": "2025-09-20T00:00:00Z",
+            "song": 1
+        }
+    },
+    {
+        "model": "catalog_app.lyric",
+        "pk": 2,
+        "fields": {
+            "content": "Hello, it's me\nI was wondering if after all these years you'd like to meet\nTo go over everything\nThey say that time's supposed to heal ya, but I ain't done much healing",
+            "date_created": "2025-09-20T00:00:00Z",
+            "song": 2
+        }
+    },
+    {
+        "model": "catalog_app.lyric",
+        "pk": 3,
+        "fields": {
+            "content": "The club isn't the best place to find a lover\nSo the bar is where I go\nMe and my friends at the table doing shots\nDrinking fast and then we talk slow",
+            "date_created": "2025-09-20T00:00:00Z",
+            "song": 3
+        }
+    },
+    {
+        "model": "catalog_app.lyric",
+        "pk": 4,
+        "fields": {
+            "content": "I stay out too late\nGot nothing in my brain\nThat's what people say, mmm-mmm\nThat's what people say, mmm-mmm",
+            "date_created": "2025-09-20T00:00:00Z",
+            "song": 4
+        }
+    },
+    {
+        "model": "catalog_app.lyric",
+        "pk": 5,
+        "fields": {
+            "content": "Oh, her eyes, her eyes make the stars look like they're not shining\nHer hair, her hair falls perfectly without her trying\nShe's so beautiful and I tell her everyday",
+            "date_created": "2025-09-20T00:00:00Z",
+            "song": 5
+        }
+    }
+]

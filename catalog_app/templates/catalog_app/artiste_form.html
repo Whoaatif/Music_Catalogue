@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load form_tags %}
+
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add New{% endif %} Artiste{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-b from-purple-900 via-purple-800 to-purple-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl mx-auto">
+        <!-- Card Container -->
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-4">
+                <h1 class="text-2xl font-bold text-white">
+                    {% if form.instance.pk %}
+                        Edit Artiste
+                    {% else %}
+                        Add New Artiste
+                    {% endif %}
+                </h1>
+                <p class="text-purple-200 text-sm mt-1">Fill in the details below</p>
+            </div>
+
+            <!-- Form Content -->
+            <div class="p-6">
+                <form method="post" class="space-y-6">
+                    {% csrf_token %}
+                    <div class="space-y-6">
+                        <!-- First Name -->
+                        <div>
+                            <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-gray-700">First Name</label>
+                            <div class="mt-1">
+                                {{ form.first_name|addclass:"block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500" }}
+                            </div>
+                            {% if form.first_name.errors %}
+                                <p class="mt-2 text-sm text-red-600">
+                                    {% for error in form.first_name.errors %}{{ error }}{% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Last Name -->
+                        <div>
+                            <label for="{{ form.last_name.id_for_label }}" class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <div class="mt-1">
+                                {{ form.last_name|addclass:"block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500" }}
+                            </div>
+                            {% if form.last_name.errors %}
+                                <p class="mt-2 text-sm text-red-600">
+                                    {% for error in form.last_name.errors %}{{ error }}{% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <!-- Age -->
+                        <div>
+                            <label for="{{ form.age.id_for_label }}" class="block text-sm font-medium text-gray-700">Age</label>
+                            <div class="mt-1">
+                                {{ form.age|addclass:"block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-purple-500 focus:border-purple-500" }}
+                            </div>
+                            {% if form.age.errors %}
+                                <p class="mt-2 text-sm text-red-600">
+                                    {% for error in form.age.errors %}{{ error }}{% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="flex items-center justify-end space-x-4 mt-8">
+                        <a href="{% url 'artiste_list' %}" 
+                           class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200">
+                            Cancel
+                        </a>
+                        <button type="submit" 
+                                class="px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 transition-all duration-200">
+                            {% if form.instance.pk %}Update{% else %}Create{% endif %} Artiste
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="mt-6 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-lg font-semibold text-gray-900 mb-4">Tips</h2>
+            <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-center">
+                    <svg class="h-4 w-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Enter the full first and last names
+                </li>
+                <li class="flex items-center">
+                    <svg class="h-4 w-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Age should be a positive number
+                </li>
+                <li class="flex items-center">
+                    <svg class="h-4 w-4 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    All fields are required
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add animation to form fields
+    const formFields = document.querySelectorAll('input, select, textarea');
+    formFields.forEach((field, index) => {
+        field.style.opacity = '0';
+        field.style.transform = 'translateY(20px)';
+        field.style.transition = 'all 0.3s ease';
+        
+        setTimeout(() => {
+            field.style.opacity = '1';
+            field.style.transform = 'translateY(0)';
+        }, 100 * (index + 1));
+    });
+
+    // Add validation feedback
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        formFields.forEach(field => {
+            if (field.hasAttribute('required') && !field.value) {
+                field.classList.add('border-red-500', 'bg-red-50');
+                field.classList.remove('border-gray-300');
+            }
+        });
+    });
+
+    // Remove validation styling on input
+    formFields.forEach(field => {
+        field.addEventListener('input', function() {
+            field.classList.remove('border-red-500', 'bg-red-50');
+            field.classList.add('border-gray-300');
+        });
+    });
+});
+</script>
+{% endblock %}

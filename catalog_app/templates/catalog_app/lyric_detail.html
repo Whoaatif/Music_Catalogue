@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Lyrics for {{ lyric.song.title }}{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Lyrics for {{ lyric.song.title }}</h1>
+<div class="bg-white p-6 rounded shadow mb-4">
+    <h2 class="text-xl font-semibold mb-2">Song Information</h2>
+    <p><strong>Title:</strong> {{ lyric.song.title }}</p>
+    <p><strong>Artist:</strong> {{ lyric.song.artiste.first_name }} {{ lyric.song.artiste.last_name }}</p>
+    <p><strong>Release Date:</strong> {{ lyric.song.release_date }}</p>
+</div>
+
+<div class="bg-white p-6 rounded shadow mb-4">
+    <h2 class="text-xl font-semibold mb-2">Lyrics Content</h2>
+    {% if lyric.content %}
+        <pre class="whitespace-pre-wrap bg-gray-100 p-4 rounded">{{ lyric.content }}</pre>
+    {% else %}
+        <p class="text-gray-500 italic">No lyrics content available for this song.</p>
+    {% endif %}
+</div>
+
+<div class="bg-white p-6 rounded shadow mb-4">
+    <h2 class="text-xl font-semibold mb-2">Lyrics Information</h2>
+    <p><strong>Created:</strong> {{ lyric.date_created|date:"M d, Y" }}</p>
+</div>
+
+<div class="flex space-x-4">
+    <a href="{% url 'lyric_update' lyric.pk %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Lyrics</a>
+    <a href="{% url 'lyric_delete' lyric.pk %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete Lyrics</a>
+    <a href="{% url 'lyric_list' %}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Back to Lyrics</a>
+</div>
+{% endblock %}

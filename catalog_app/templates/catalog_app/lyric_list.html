@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}Lyrics{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Lyrics</h1>
+<table class="min-w-full bg-white border border-gray-300">
+    <thead>
+        <tr class="bg-gray-200">
+            <th class="py-2 px-4 border">Song Title</th>
+            <th class="py-2 px-4 border">Artist</th>
+            <th class="py-2 px-4 border">Lyric Preview</th>
+            <th class="py-2 px-4 border">Date Created</th>
+            <th class="py-2 px-4 border">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lyric in lyrics %}
+        <tr class="hover:bg-gray-100">
+            <td class="py-2 px-4 border">{{ lyric.song.title }}</td>
+            <td class="py-2 px-4 border">{{ lyric.song.artiste.first_name }} {{ lyric.song.artiste.last_name }}</td>
+            <td class="py-2 px-4 border">
+                {% if lyric.content %}
+                    <span class="text-sm text-gray-600">{{ lyric.content|truncatechars:50 }}</span>
+                {% else %}
+                    <span class="text-gray-500 italic">No lyrics available</span>
+                {% endif %}
+            </td>
+            <td class="py-2 px-4 border">{{ lyric.date_created|date:"M d, Y" }}</td>
+            <td class="py-2 px-4 border">
+                <a href="{% url 'lyric_detail' lyric.pk %}" class="text-blue-600 hover:underline">View</a> |
+                <a href="{% url 'lyric_update' lyric.pk %}" class="text-green-600 hover:underline">Edit</a> |
+                <a href="{% url 'lyric_delete' lyric.pk %}" class="text-red-600 hover:underline">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if not lyrics %}
+<div class="mt-8 text-center">
+    <p class="text-gray-500 mb-4">No lyrics found. Create some lyrics!</p>
+    <a href="{% url 'lyric_create' %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add Lyrics
+    </a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ artiste }}{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">{{ artiste }}</h1>
+<p><strong>Age:</strong> {{ artiste.age }}</p>
+<p><strong>Date Created:</strong> {{ artiste.get_date }}</p>
+<a href="{% url 'artiste_update' artiste.pk %}" class="bg-blue-500 text-white px-4 py-2 rounded">Edit</a>
+<a href="{% url 'artiste_delete' artiste.pk %}" class="bg-red-500 text-white px-4 py-2 rounded">Delete</a>
+{% endblock %}

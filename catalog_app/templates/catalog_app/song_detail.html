@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{ song.title }} - Song Details{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">{{ song.title }}</h1>
+<div class="bg-white p-6 rounded shadow mb-4">
+    <h2 class="text-xl font-semibold mb-2">Song Information</h2>
+    <p><strong>Title:</strong> {{ song.title }}</p>
+    <p><strong>Artist:</strong> {{ song.artiste.first_name }} {{ song.artiste.last_name }}</p>
+    <p><strong>Release Date:</strong> {{ song.release_date }}</p>
+    <p><strong>Date Created:</strong> {{ song.date_created|date:"M d, Y" }}</p>
+</div>
+
+<div class="bg-white p-6 rounded shadow mb-4">
+    <h2 class="text-xl font-semibold mb-2">Artist Details</h2>
+    <p><strong>Name:</strong> {{ song.artiste.first_name }} {{ song.artiste.last_name }}</p>
+    <p><strong>Age:</strong> {{ song.artiste.age }} years</p>
+    <p><strong>Joined:</strong> {{ song.artiste.date_created|date:"M d, Y" }}</p>
+</div>
+
+<div class="flex space-x-4">
+    <a href="{% url 'song_update' song.pk %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Song</a>
+    <a href="{% url 'song_delete' song.pk %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete Song</a>
+    <a href="{% url 'song_list' %}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Back to Songs</a>
+</div>
+{% endblock %}
