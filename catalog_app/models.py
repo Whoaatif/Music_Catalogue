@@ -12,6 +12,12 @@ class Artiste(models.Model):
     def get_date(self):
         return self.date_created.strftime('%b %d, %Y')
 
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def song_count(self):
+        return self.song_set.count()
+
 class Song(models.Model):
     title = models.CharField(max_length=200)
     release_date = models.DateField()

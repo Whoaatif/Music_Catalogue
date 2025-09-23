@@ -1,9 +1,12 @@
+import logging
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from .models import Artiste, Song, Lyric
 from .forms import ArtisteForm, SongForm, LyricForm
+
+logger = logging.getLogger(__name__)
 
 # Artiste Views
 class ArtisteListView(ListView):
@@ -34,6 +37,7 @@ class ArtisteDeleteView(DeleteView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        logger.info(f"Deleting Artiste: {self.object}")
         self.object.delete()
         return JsonResponse({'success': True})
 
@@ -66,6 +70,7 @@ class SongDeleteView(DeleteView):
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
+        logger.info(f"Deleting Song: {self.object}")
         self.object.delete()
         return JsonResponse({'success': True})
 
@@ -93,5 +98,11 @@ class LyricUpdateView(UpdateView):
 
 class LyricDeleteView(DeleteView):
     model = Lyric
-    template_name = 'catalog_app/lyric_confirm_delete.html'
+    # template_name = 'catalog_app/lyric_confirm_delete.html' # Removed for AJAX
     success_url = '/lyrics/'
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        logger.info(f"Deleting Lyric: {self.object}")
+        self.object.delete()
+        return JsonResponse({'success': True})
