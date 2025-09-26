@@ -98,7 +98,7 @@ class LyricUpdateView(UpdateView):
 
 class LyricDeleteView(DeleteView):
     model = Lyric
-    # template_name = 'catalog_app/lyric_confirm_delete.html' # Removed for AJAX
+    template_name = 'catalog_app/lyric_confirm_delete.html'
     success_url = '/lyrics/'
 
     def post(self, request, *args, **kwargs):

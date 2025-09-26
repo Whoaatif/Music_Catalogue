@@ -25,7 +25,7 @@
 
 <div class="flex space-x-4">
     <a href="{% url 'lyric_update' lyric.pk %}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit Lyrics</a>
-    <a href="{% url 'lyric_delete' lyric.pk %}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete Lyrics</a>
+    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded delete-btn" data-id="{{ lyric.pk }}" data-type="lyric">Delete Lyrics</button>
     <a href="{% url 'lyric_list' %}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Back to Lyrics</a>
 </div>
 {% endblock %}

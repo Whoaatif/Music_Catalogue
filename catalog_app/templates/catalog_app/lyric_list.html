@@ -28,7 +28,7 @@
             <td class="py-2 px-4 border">
                 <a href="{% url 'lyric_detail' lyric.pk %}" class="text-blue-600 hover:underline">View</a> |
                 <a href="{% url 'lyric_update' lyric.pk %}" class="text-green-600 hover:underline">Edit</a> |
-                <a href="{% url 'lyric_delete' lyric.pk %}" class="text-red-600 hover:underline">Delete</a>
+                <button class="text-red-600 hover:underline delete-btn" data-id="{{ lyric.pk }}" data-type="lyric">Delete</button>
             </td>
         </tr>
         {% endfor %}
