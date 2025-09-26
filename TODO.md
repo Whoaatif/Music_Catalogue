@@ -1,18 +1,12 @@
-# Project Update TODO
+# TODO: Run Django Music Catalog Project
 
-## Plan Summary
-- Create new branch for changes
-- Set up PR template
-- Update .gitignore
-- Implement backend improvements (logging, model methods, standardize deletes)
-- Commit, push, and create PR
+- [x] Create virtual environment: `python -m venv venv`
+- [x] Install dependencies: `venv\Scripts\pip install -r requirements.txt`
+- [x] Run migrations: `run_django.bat migrate`
+- [ ] Run the Django development server: `run_django.bat runserver`
 
-## Steps
-- [x] Create new branch 'feature/project-updates'
-- [x] Create PR_TEMPLATE folder with pull_request_template.md
-- [x] Create .gitignore using Python and Node.js templates
-- [x] Add new method to Artiste model in catalog_app/models.py
-- [x] Add logging and standardize deletes in catalog_app/views.py
-- [ ] Commit all changes
-- [ ] Push the new branch
-- [ ] Create pull request from 'feature/project-updates' to 'main'
+# Fix for Lyric Delete 404 Issue
+
+- [x] Uncomment template_name in LyricDeleteView to show confirmation page on GET
+- [x] Change delete links in lyric_list.html and lyric_detail.html to AJAX buttons using delete-btn class
+- [x] This prevents 404 on GET for non-existent lyrics and uses AJAX POST for deletion
